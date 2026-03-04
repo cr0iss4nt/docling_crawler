@@ -1,10 +1,9 @@
 It's an asynchronous web crawler built on BeautifulSoup and Docling which saves parsed pages in Markdown.
 
-Launch like this:
-```
-uvicorn main:app --reload
-```
+Steps to launch:
+1. ```docker compose build --progress:plain``` for logging.
+2. ```docker compose up```
 
-It runs on port 8000 and requires Valkey running on port 6379.
+Use ```docker compose start``` and ```docker compose stop``` to start and stop the project.
 
 Get all endpoints by going to localhost:8000/docs.

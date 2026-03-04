@@ -9,6 +9,7 @@ from docling.datamodel.base_models import InputFormat
 from docling.document_converter import DocumentConverter
 from docling_core.types.doc import ImageRefMode
 import valkey
+from config import settings
 
 logger = logging.getLogger(__name__)
 
@@ -21,7 +22,7 @@ class AsyncCrawler:
         self.converter = DocumentConverter()
         self.semaphore = asyncio.Semaphore(max_concurrency)
         self.allowed_domains = set()
-        self.valkey = valkey.Valkey(host="localhost", port=6379, db=0, decode_responses=True)
+        self.valkey = valkey.Valkey(host=settings.VALKEY_HOST, port=6379, db=0, decode_responses=True)
         self._stop_event = asyncio.Event()
 
         os.makedirs(self.output_dir, exist_ok=True)

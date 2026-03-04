@@ -12,7 +12,7 @@ from config import settings
 
 router = APIRouter(prefix="/crawl", tags=["crawl"])
 manager = CrawlerManager()
-vk = valkey.Valkey(host="localhost", port=6379, db=0, decode_responses=True)
+vk = valkey.Valkey(host=settings.VALKEY_HOST, port=6379, db=0, decode_responses=True)
 
 @router.post("/start", response_model=dict)
 async def start_crawl(request: CrawlStartRequest):
