@@ -13,6 +13,7 @@ from config import settings
 router = APIRouter(prefix="/crawl", tags=["crawl"])
 manager = CrawlerManager()
 vk = valkey.Valkey(host=settings.VALKEY_HOST, port=6379, db=0, decode_responses=True)
+os.makedirs(settings.OUTPUT_BASE_FOLDER,exist_ok=True)
 
 @router.post("/start", response_model=dict)
 async def start_crawl(request: CrawlStartRequest):
